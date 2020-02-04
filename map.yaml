@@ -1,0 +1,76 @@
+ServiceURL: http://printmaps-osm.de:8282/api/beta2/maps/
+
+Fileformat: png
+
+Scale: 27000
+PrintWidth: 608.6
+PrintHeight: 812.8
+
+# center coordinates (decimal degrees, e.g. 51.9506)
+# Bern is at https://www.openstreetmap.org/#map=14/46.9545/7.4487
+Latitude: 46.9545
+Longitude: 7.4487
+
+# style / design (osm-carto, osm-carto-mono, osm-carto-ele20, schwarzplan, schwarzplan+, raster10)
+# raster10 (no map data): useful for placing / styling the user map elements
+# request the service capabilities to get a list of all available map styles
+Style: schwarzplan+
+
+# map projection, EPSG code as number (without prefix "EPSG:")
+# e.g. 3857 (EPSG:3857 / WGS84 / Web Mercator) (used by Google/Bing/OpenStreetMap)
+# e.g. 32632 (EPSG:32632 / WGS 84 / UTM Zone 32N)
+# e.g. 27700 (EPSG:27700 / OSGB 1936 / British National Grid)
+Projection: 3857
+
+# advanced map attributes (optional)
+# ----------------------------------
+
+# layers to hide (see service capabilities for possible values)
+# e.g. hide admin borders: admin-low-zoom,admin-mid-zoom,admin-high-zoom,admin-text
+# e.g. hide nature reserve borders: nature-reserve-boundaries,nature-reserve-text
+# e.g. hide tourism borders (theme park, zoo): tourism-boundary
+# e.g. hide highway shields: roads-text-ref-low-zoom,roads-text-ref
+HideLayers: buildings #,highways,railways
+
+# user defined objects (optional, draw order remains)
+# ---------------------------------------------------
+#
+# data object defined by ...
+# style: object style
+# srs: spatial reference system (is always '+init=epsg:4326' for gpx and kml)
+# type: type of data source (ogr, shape, gdal, csv)
+# file: name of data objects file
+# layer: data layer to extract (only required for ogr)
+#
+# item object defined by ...
+# style: object style
+# well-known-text: object definition
+#
+# well-known-text:
+#   POINT, LINESTRING, POLYGON, MULTIPOINT, MULTILINESTRING, MULTIPOLYGON
+#   all values are in millimeter (reference X0 Y0: lower left map corner)
+#
+# font sets:
+#   fontset-0: Noto Fonts normal
+#   fontset-1: Noto Fonts italic
+#   fontset-2: Noto Fonts bold
+
+UserObjects:
+
+# header text
+- Style: <TextSymbolizer fontset-name='fontset-2' size='50' fill='#EBEBEB' allow-overlap='true'>'46° 57\' 16.2\" N / 7° 26\' 55.3\" W'</TextSymbolizer>
+  WellKnownText: POINT(305 760)
+- Style: <TextSymbolizer fontset-name='fontset-0' size='260' fill='#EBEBEB' allow-overlap='true'>'BERN'</TextSymbolizer>
+  WellKnownText: POINT(305 715)
+- Style: <TextSymbolizer fontset-name='fontset-0' size='120' fill='#EBEBEB' allow-overlap='true'>'SCHWEIZ'</TextSymbolizer>
+  WellKnownText: POINT(305 660)
+
+# copyright
+- Style: <TextSymbolizer fontset-name='fontset-0' size='12' fill='#EBEBEB' orientation='90' allow-overlap='true'>'© OpenStreetMap contributors'</TextSymbolizer>
+  WellKnownText: POINT(10.0 406.4)
+
+# user files to upload
+# --------------------
+
+UserFiles:
+- scalebar-1000.geojson
