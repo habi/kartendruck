@@ -19,3 +19,7 @@ tar -xvf printmaps_linux_386.tar.gz
 - `./printmaps order` generates the map on the server
 - `./printmaps state` returns the current map status to check for you if it's ready
 - `./printmaps download` downloads (a ZIP) file of the map
+
+4. Edit the `map.yaml` file and call `./printmaps update`, `./printmaps order`, `./printmaps state`, `./printmaps download` and `./printmaps unzip` to download and unzip an updated version.
+
+5. Create a scale bar with `./printmaps bearingline 46.9545 7.4487 90 1000 "1 km" scalebar-1000`
